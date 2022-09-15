@@ -53,7 +53,7 @@ learn_assess =
     abs_norm_samp = abs(norm_samp)
   )
 
-ggplot(learn_assess, aes(x=abs_norm_samp)) + geom_histogram()
+
 ```
 
 # Section
