@@ -1,0 +1,67 @@
+---
+title: "Simple document"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r round(mean(samp),2)`.
+
+# Section 3
+
+This is going to make a plot! First, I generate a dataframe, than use `ggplot` to make a scatterplot.
+
+```{r chunk_scatter, echo = FALSE}
+plot_df = 
+  tibble(
+    x = rnorm(n = 1000),
+    y = 1 + 2 * x + rnorm(n = 1000)
+  )
+
+ggplot(plot_df, aes (x = x, y = y)) + geom_point()
+```
+
+Write a named code chunk that creates a dataframe comprised of: a numeric variable containing a random sample of size 500 from a normal variable with mean 1; a logical vector indicating whether each sampled value is greater than zero; and a numeric vector containing the absolute value of each element. Then, produce a histogram of the absolute value variable just created. Add an inline summary giving the median value rounded to two decimal places. What happens if you set eval = FALSE to the code chunk? What about echo = FALSE?
+
+```{r}
+learn_assess = 
+  tibble(
+    norm_samp = rnorm(n = 500, mean = 1),
+    norm_samp_pos = norm_samp > 0,
+    abs_norm_samp = abs(norm_samp)
+  )
+
+ggplot(learn_assess, aes(x=abs_norm_samp)) + geom_histogram()
+```
+
+# Section
+## Subsection
+### Sub-sub section
+
+Here's a list:
+
+* Item 1
+* Item 2
+
